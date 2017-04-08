@@ -345,6 +345,7 @@
       <message-type abbrev="AutonomousSection"/>
       <message-type abbrev="FollowPoint"/>
       <message-type abbrev="BallastAndTrim"/>
+      <message-type abbrev="FrontTracking2D"/>
     </message-group>
 
     <message-group name="Control Command" abbrev="ControlCommand">
@@ -9851,4 +9852,118 @@
       </description>
     </field>
   </message>
+
+  <message id="1451" name="Front Tracking 2D" abbrev="FrontTracking2D" source="ccu">
+    <description>Front tracking, based on work of Yanwu Zhang</description>
+    <field name="Latitude WGS-84" abbrev="lat" type="fp64_t" unit="rad" min="-1.5707963267948966" max="1.5707963267948966">
+      <description>
+        WGS-84 Latitude of target waypoint.
+      </description>
+    </field>
+    <field name="Longitude WGS-84" abbrev="lon" type="fp64_t" unit="rad" min="-3.141592653589793" max="3.141592653589793">
+      <description>
+        WGS-84 Longitude of target waypoint.
+      </description>
+    </field>
+    <field name="Z Reference" abbrev="z" type="fp32_t" unit="m">
+      <description>
+        Maneuver reference in the z axis. Use z_units to specify
+        whether z represents depth, altitude or other.
+      </description>
+    </field>
+    <field name="Z Units" abbrev="z_units" type="uint8_t" value="0" unit="Enumerated" enum-def="ZUnits">
+      <description>
+        Units of the z reference.
+      </description>
+    </field>
+    <field name="Speed" abbrev="speed" type="fp32_t">
+      <description>
+        Maneuver speed reference.
+      </description>
+    </field>
+    <field name="Speed Units" abbrev="speed_units" type="uint8_t" value="0" unit="Enumerated" enum-def="SpeedUnits">
+      <description>
+        Speed units.
+      </description>
+    </field>
+    <field name="Bearing" abbrev="bearing" type="fp64_t" unit="rad" min="0" max="6.283185307179586">
+      <description>
+        Rows bearing angle.
+      </description>
+    </field>
+    <field name="Width" abbrev="width" min="0" type="fp32_t" unit="m">
+      <description>
+        Bounding box east-west width of maneuver
+      </description>
+    </field>
+    <field name="Length" abbrev="length" min="0" type="fp32_t" unit="m">
+      <description>
+        Bounding box north-south length of maneuver
+      </description>
+    </field>
+
+    <field name="Max traverse length" abbrev="maxTraverseMeter" min="0" type="fp32_t" unit="m">
+      <description>
+        Maximum linear length of traverse before reversing direction
+      </description>
+    </field>
+
+
+    <field name="Max leg time" abbrev="maxLegDurationSec" min="0" type="uint16_t" unit="s">
+      <description>
+	Maximum duration of a zig-zag leg
+      </description>
+    </field>
+
+
+    <field name="Zig-zag angle" abbrev="turnAngleDegs" min="0" type="fp32_t" unit="°">
+      <description>
+        Turn angle between each zig-zag leg
+      </description>
+    </field>
+
+    <field name="Flags" abbrev="flags" type="uint8_t" unit="Bitfield" prefix="FLG">
+      <description>
+        Maneuver optional flags.
+      </description>
+      <value id="0x01" name="North sweep" abbrev="NORTH_SWEEP">
+        <description>
+          Whether to move north-to-south
+        </description>
+      </value>
+      <value id="0x02" name="First turn right" abbrev="FIRST_TURN_RIGHT">
+        <description>
+          Shall the vehicle start zig-zagging to right?
+        </description>
+      </value>
+    </field>
+
+    <field name="North bounding latitutde" abbrev="northBoxLat" type="fp64_t" unit="rad" min="-1.5707963267948966" max="1.5707963267948966">
+      <description>
+        WGS-84 Latitude of bounding box north edge
+      </description>
+    </field>
+
+    <field name="South bounding latitutde" abbrev="southBoxLat" type="fp64_t" unit="rad" min="-1.5707963267948966" max="1.5707963267948966">
+      <description>
+        WGS-84 Latitude of bounding box south edge
+      </description>
+    </field>
+
+
+    <field name="East bounding longitude" abbrev="eastBoxLon" type="fp64_t" unit="rad" min="-1.5707963267948966" max="1.5707963267948966">
+      <description>
+        WGS-84 Longitude of bounding box east edge
+      </description>
+    </field>
+
+
+    <field name="West bounding longitude" abbrev="westBoxLon" type="fp64_t" unit="rad" min="-1.5707963267948966" max="1.5707963267948966">
+      <description>
+        WGS-84 Longitude of bounding box west edge
+      </description>
+    </field>
+
+    </message>
 </messages>
+
