@@ -9886,7 +9886,7 @@
         Speed units.
       </description>
     </field>
-    <field name="Bearing" abbrev="bearing" type="fp64_t" unit="rad" min="0" max="6.283185307179586">
+    <field name="Bearing (deg)" abbrev="bearingDeg" type="fp64_t" unit="°" min="-360" max="360">
       <description>
         Rows bearing angle.
       </description>
@@ -9916,9 +9916,15 @@
     </field>
 
 
-    <field name="Zig-zag angle" abbrev="turnAngleDegs" min="0" type="fp32_t" unit="°">
+    <field name="Zig-zag angle" abbrev="turnAngleDeg" type="fp32_t" unit="°" min="-360" max="360">
       <description>
         Turn angle between each zig-zag leg
+      </description>
+    </field>
+
+    <field name="Start search heading" abbrev="beginSearchHdgDeg" type="fp32_t" unit="°" min="-360" max="360">
+      <description>
+	Begin searching for front at this heading
       </description>
     </field>
 
@@ -9938,27 +9944,27 @@
       </value>
     </field>
 
-    <field name="North bounding latitutde" abbrev="northBoxLat" type="fp64_t" unit="rad" min="-1.5707963267948966" max="1.5707963267948966">
+    <field name="North bounding latitutde" abbrev="northBoxLatDeg" type="fp64_t" unit="°" min="-90" max="90">
       <description>
         WGS-84 Latitude of bounding box north edge
       </description>
     </field>
 
-    <field name="South bounding latitutde" abbrev="southBoxLat" type="fp64_t" unit="rad" min="-1.5707963267948966" max="1.5707963267948966">
+    <field name="South bounding latitutde" abbrev="southBoxLatDeg" type="fp64_t" unit="°" min="-90" max="90">
       <description>
         WGS-84 Latitude of bounding box south edge
       </description>
     </field>
 
 
-    <field name="East bounding longitude" abbrev="eastBoxLon" type="fp64_t" unit="rad" min="-1.5707963267948966" max="1.5707963267948966">
+    <field name="East bounding longitude" abbrev="eastBoxLonDeg" type="fp64_t" unit="°" min="-180" max="180">
       <description>
         WGS-84 Longitude of bounding box east edge
       </description>
     </field>
 
 
-    <field name="West bounding longitude" abbrev="westBoxLon" type="fp64_t" unit="rad" min="-1.5707963267948966" max="1.5707963267948966">
+    <field name="West bounding longitude" abbrev="westBoxLonDeg" type="fp64_t" unit="°" min="-180" max="180">
       <description>
         WGS-84 Longitude of bounding box west edge
       </description>
